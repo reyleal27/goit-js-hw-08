@@ -6,12 +6,14 @@ player.on('timeupdate', function(data) {
   });
 
 
-player.on('getCurrentTime', function() {
-const currentTime = localStorage.getItem('videoplayer-current-time');
-if (currentTime) {
-  player.setCurrentTime(currentTime);
-}
-});
+const useCurrentTime = () => {
+  const currentTime = localStorage.getItem('videoplayer-current-time');
+  if (currentTime){
+    player.setCurrentTime(currentTime);
+  }
+};
+useCurrentTime();
+
 
 
 player.on('timeupdate', _.throttle(function(data) {
